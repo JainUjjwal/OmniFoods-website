@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <style>
+            #external{
+                height: 50px;
+                width: 150px;
+                background-color: white;
+                border: 1px solid black;
+                position: relative;
+                overflow: hidden;
+            }
+            
+            #internal{
+                height: 100%;
+                background-color: blue;
+                position: absolute;
+                left: -18%;
+                top: 0;  
+                transition: 0.5s transform;
+                transform: scale(1);
+                width: 0;
+            }
+            
+            
+        </style>
+    </head>
+    <body>
+        <div id="external">
+            <div id="internal"></div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+        <script>
+            $("#external").hover(function(){
+                $("#internal").animate({
+                width: "118%"
+                });
+                $("#internal").css({
+                    "transform": "scale(1,1)"
+                });
+            },function(){
+                $("#internal").css({
+                    "transform": "scale(1,0)"
+                });
+                setTimeout(function(){
+                    $("#internal").css({
+                    "transform": "scale(1)",
+                    width: 0
+                });
+                },500)
+                });
+            });
+        </script>
+    </body>
+</html>

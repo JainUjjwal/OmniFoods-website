@@ -24,11 +24,11 @@
         array_push($LnameArray, $Lname);
     }
 
-
+    $arr = array("Sindhana's user list","Shaktivel's user list","Poonam's user list");
     //Create a cURL handle.
     $webpages = array();
-    $urls = array('http://skyvah.com/user-list-skyvah/', 'https://www.hikelife.org/appusers.php');
-    for ($x = 0; $x < 2; $x++) {
+    $urls = array('http://skyvah.com/user-list-skyvah/', 'https://www.hikelife.org/appusers.php', 'http://py-projects.com/appUsers.php');
+    for ($x = 0; $x < 3; $x++) {
 
         $ch = curl_init($urls[$x]);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -62,11 +62,13 @@
         $('#My_Users').html(displayValues);
 
         let newWeb = <?php echo json_encode($webpages); ?>;
+        let arr2 = <?php echo json_encode($arr);?>
+        // console.log(newWeb[1])
         const parser = new DOMParser();
         let data_to_show = ''
         $('#other_users').html('')
         for (j = 0; j < newWeb.length; j++) {
-            data_to_show += `<h1 style='color:black'>WebPage ${j+1}</h1>`
+            data_to_show += `<h1 style='color:black'> ${arr2[j]}</h1>`
             data_to_show += `<table><tr><th>First Name</th><th>Last Name</th></tr>`
             let doc = parser.parseFromString(newWeb[j], "text/html");
             let arr = doc.getElementsByClassName('information')

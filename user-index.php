@@ -45,9 +45,9 @@
         let displayValues = '';
         for (i = 0; i < Fnames.length; i++) {
             displayValues += `<div class = "information">${Fnames[i]} ${Lnames[i]} </div>`
-
         }
-        $('#results').html(displayValues);
+        // $('#results').html(displayValues);
+        document.getElementById('results').innerHTML = displayValues
     </script>
 </body>
 
